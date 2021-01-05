@@ -1,0 +1,21 @@
+.p-1 {
+    padding: 1rem;
+}
+
+.bg-main-orange {
+    background-color: #ffa940 !important;
+}
+
+.bg-main-dark {
+    background-color: #363636 !important;
+}
+
+.text-white {
+    color: white;
+}
+
+.user-select-none {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}

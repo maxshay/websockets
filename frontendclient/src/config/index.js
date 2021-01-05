@@ -1,7 +1,7 @@
 require('dotenv').config({path: '../.env'});
 
 const config = {
-    somepath: process.env.SOME_PATH
+    wsPath: process.env.WS_PATH
 }
 
 export default config
