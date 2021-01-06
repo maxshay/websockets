@@ -21,9 +21,15 @@ const getApiAndEmit = socket => {
   socket.emit('message', response);
 }
 
+const randomHSL = () => {
+    return "hsla(" + ~~(360 * Math.random()) + "," + "70%,"+ "80%,1)"
+}
+
 let interval;
 io.on('connection', (socket) => {
+
     console.log('a client connected')
+    socket.colorVal = randomHSL()
 
     // if (interval) {
     //     clearInterval(interval);
@@ -36,10 +42,8 @@ io.on('connection', (socket) => {
     });
 
     socket.on('message', (message) => {
-        console.log(`${socket.id} said ${message.body}`)
-        io.emit('message', `${socket.id} said ${message.body}`)
+        io.emit('message', {user: socket.id, message: message.body, color: {color: socket.colorVal}})
     })
-
 
 })
 

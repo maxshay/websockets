@@ -1,7 +1,7 @@
-require('dotenv').config({path: '../.env'});
+require('dotenv').config();
 
 const config = {
-    wsPath: process.env.WS_PATH
+    wsPath: process.env.REACT_APP_WS_PATH
 }
 
 export default config

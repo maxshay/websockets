@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import styled from 'styled-components'
 import io from 'socket.io-client'
 
@@ -23,11 +23,15 @@ const WsClient = () => {
     }
 
     useEffect(() => {
+        ws.current = io.connect(config.wsPath)
+        ws.current.on('connect', () => {
+            console.log('I connected!')
+        })
 
-        ws.current = io(config.wsPath)
         ws.current.on('message', (data) => {
             setMessages(prev=>[...prev, data])
         })
+
         return () => ws.current.disconnect()
     }, []);
 
@@ -75,7 +79,7 @@ const WsClient = () => {
             <div className="d-flex justify-content-center mt-5">
                 <NakedUl className="text-white w-75">
                     {
-                        messages && messages.map(message => <li key={Math.floor(Math.random()*31455134551345)}>{message}</li>)
+                        messages && messages.map(message => <li key={Math.floor(Math.random()*31455134551345)} style={message.color}>{message.user} - {message.message}</li>)
                     }
                 </NakedUl>
             </div>
