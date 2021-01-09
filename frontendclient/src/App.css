@@ -1,23 +1,27 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 .App {
-    min-height: 100vh;
-    overflow: auto;
+  min-height: 100vh;
+  overflow: auto;
 }
 
 .mana-field {
-    outline: none;
-    background: none;
-    color: white !important;
+  outline: none;
+  background: none;
+  color: white !important;
 }
 .mana-field:focus {
-    background-color: none;
-    background: none;
-    outline: none;
-    border-color: white;
-    box-shadow: 0 0 0 0.05rem rgb(255 255 255);
+  background-color: none;
+  background: none;
+  outline: none;
+  border-color: white;
+  box-shadow: 0 0 0 0.05rem rgb(255 255 255);
+}
+
+.extra-toast-body {
+  padding-left: 10px;
 }

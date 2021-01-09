@@ -1,47 +1,39 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'antd/dist/antd.css'
-import "./styling/utils.css"
-import "./App.css"
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import "bootstrap/dist/css/bootstrap.min.css";
+import 'react-toastify/dist/ReactToastify.css';
+import "antd/dist/antd.css";
+import "./styling/utils.css";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-// material ui styles
+
+// components
 import WsClient from "./components/WsClient";
+import NotFound from "./components/NotFound";
+import Home from "./components/Home";
 
 // images
-import websocketImage from './imgs/websocket.png'
-
-
+import Banner from "./components/Banner";
 
 const App = () => {
-    
-    return (
-        <div className="App bg-main-dark">
-            <div className="container-xl">
-                <div className="d-flex justify-content-center mt-5">
-                    <img src={websocketImage} className="img-fluid" alt="ws"/>
-                </div>
-                <div className="mt-5">
-                    <Router>
-                        <Switch>
-                            <Route exact path="/">
-                                <div className="d-flex justify-content-center">
-                                    <Link to="/chat">
-                                        <button type="button" className="btn btn-warning text-white user-select-none">
-                                            Connect!
-                                        </button>
-                                    </Link>
-                                </div>   
-                            </Route>
-                            <Route path="/chat">
-                                <WsClient />
-                            </Route>
-                        </Switch>
-                        
-                    </Router>
-                </div>
-            </div>
+
+
+
+  return (
+    <div className="App bg-main-dark">
+      <div className="container-xl">
+        <Banner />
+        <div className="mt-5">
+          <Router>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/chat/:room" component={WsClient} />
+              <Route component={NotFound} />
+            </Switch>
+          </Router>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default App;
