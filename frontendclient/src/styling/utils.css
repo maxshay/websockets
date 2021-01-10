@@ -19,3 +19,9 @@
   -moz-user-select: none;
   -webkit-user-select: none;
 }
+
+@media screen and (max-width: 600px) {
+  .w-sm-100 {
+    width: 100% !important;
+  }
+}

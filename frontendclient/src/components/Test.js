@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const NotFound = () => {
+const Test = () => {
   return (
     <motion.div exit={{ opacity: 0 }}>
-      <div className="w-100 text-center">
-        Page not found <p>: (</p>
+      <div className="text-center w-100">
+        Test Page
         <div className="mt-3">
           <Link to="/">
             <button
@@ -22,4 +22,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default Test;

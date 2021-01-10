@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import io from "socket.io-client";
+import { motion } from "framer-motion";
 
 import { ToastContainer, toast } from "react-toastify";
 
@@ -49,12 +50,12 @@ const WsClient = () => {
 
   useEffect(() => {
     if (!room) {
-      return
+      return;
     }
     ws.current = io.connect(config.wsPath, {
       query: {
-        "room": room
-      }
+        room: room,
+      },
     });
 
     ws.current.on("connect", () => {
@@ -80,9 +81,9 @@ const WsClient = () => {
   };
 
   return (
-    <>
-      <div className="w-75 mx-auto">
-        <div className="text-white">{room ? room : '???' }</div>
+    <motion.div exit={{ opacity: 0 }}>
+      <div className="w-75 w-sm-100 mx-auto">
+        <div className="text-white">{room ? room : "???"}</div>
         <form>
           <div className="form-row">
             <div className="col my-1">
@@ -127,7 +128,7 @@ const WsClient = () => {
         </NakedUl>
       </div>
       <ToastContainer containerId="this-is-toast" />
-    </>
+    </motion.div>
   );
 };
 
